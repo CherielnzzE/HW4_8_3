@@ -38,9 +38,9 @@ public:
 
     friend bool operator ==(const Complex& num1, const Complex& num2);
 
-    friend ostream& operator <<(Complex& num, ostream& outputStream);
+    friend ostream& operator <<(ostream& outputStream, Complex& num);
 
-    friend istream& operator >>(Complex& num, istream& inputStream);
+    friend istream& operator >>(istream& inputStream, Complex& num);
 
 private:
 
@@ -51,37 +51,37 @@ private:
 
 const Complex i(0, 1);
 bool operator ==(const Complex& num1, const Complex& num2) {
-	return (num1.real == num2.real && num1.imaginary == num2.imaginary);
+    return (num1.real == num2.real && num1.imaginary == num2.imaginary);
 }
 
 const Complex operator +(const Complex& num1, const Complex& num2) {
-	double real, imaginary;
+    double real, imaginary;
 
-	real = num1.real + num2.real;
-	imaginary = num1.imaginary + num2.imaginary;
+    real = num1.real + num2.real;
+    imaginary = num1.imaginary + num2.imaginary;
 
-	return Complex(real, imaginary);
+    return Complex(real, imaginary);
 }
 
 const Complex operator -(const Complex& num1, const Complex& num2) {
-	double real, imaginary;
+    double real, imaginary;
 
-	real = num1.real - num2.real;
-	imaginary = num1.imaginary - num2.imaginary;
+    real = num1.real - num2.real;
+    imaginary = num1.imaginary - num2.imaginary;
 
-	return Complex(real, imaginary);
+    return Complex(real, imaginary);
 }
 
 const Complex operator *(const Complex& num1, const Complex& num2) {
-	double real, imaginary;
-	real = num1.real * num2.real - num1.imaginary * num2.imaginary;
-	imaginary = num1.real * num2.imaginary + num1.imaginary * num2.real;
+    double real, imaginary;
+    real = num1.real * num2.real - num1.imaginary * num2.imaginary;
+    imaginary = num1.real * num2.imaginary + num1.imaginary * num2.real;
 
-	return Complex(real, imaginary);
+    return Complex(real, imaginary);
 }
 
 
-ostream& operator <<(Complex& num, ostream& outputStream) {
+ostream& operator <<(ostream& outputStream, Complex& num) {
 
     outputStream << num.real;
 
@@ -106,7 +106,7 @@ ostream& operator <<(Complex& num, ostream& outputStream) {
     return(outputStream);
 }
 
-istream& operator>>(Complex& num, istream& inputStream) {
+istream& operator >>(istream& inputStream, Complex& num) {
 
     char plus;
     inputStream >> num.real >> plus >> num.imaginary;
@@ -129,7 +129,7 @@ istream& operator>>(Complex& num, istream& inputStream) {
 
 
 
-int main() {
+int main(void) {
 
     Complex num1;
     Complex num2;
